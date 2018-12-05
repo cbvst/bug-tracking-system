@@ -1,0 +1,140 @@
+downloading laravel from composer :-
+--------------------------------
+	composer create-project laravel/laravel project_name "5.1.*"      (hit enter) (5.1 is version name)
+
+for creating middleware :-
+------------------------
+	php artisan make:middleware middleware_name   (hit enter)
+
+for creating controller :-
+-----------------------
+	php artisan make:controller controller_name (hit enter)
+
+for crating model :-
+------------------
+	php artisan makeL:model model_name (hit enter)
+
+
+
+-------------------------------------------------------------
+
+@yield('name_of_cph')  // like as ContentPlaceHolder in dot net
+
+
+@extends('layout/filename')      // provide path like as include
+@section('name_of_cph')
+
+@endsection
+
+
+
+---------------------------------------------------------
+
+echo data form php to view using blade templating engine
+
+{{ $data }}  // like as <?php echo $data ?>  /* but not run script */
+
+{!! $data !!}  // like as <?php ehco $data ?>  /* but run script on browser */
+
+@{{ $data }}  // print it as on brower with brackets  /* pritn it as on browser {{ $data }} */
+
+
+		{{ $name }}  <!-- output => vikas singh<script>alert('hello');</script>  -->
+		<br>
+		{!! $name !!}  <!-- output => vikas singh and run alert script -->
+		<br>
+		@{{ $name }} <!-- output => {{ $name }} -->
+		<br>
+
+-----------------------------------------------------------------------------
+how to write if else in laravel(blade template)
+
+			@if($name=='vikas singh')
+				{{ $name }}
+			@elseif($name=='vikas')
+				{{ $name }}
+			@else
+				{{ $error }}
+			@endif
+
+
+--------------------------------------------------------------------------
+#data insert in database
+
+	first create model in app folder
+
+	code in controller file
+
+	$colum1_name ="value";
+	$colum2_name ="value";
+
+	//note - larvel automaticaly add two value in created_at  and updated_at in tables
+
+	if you want to off it so 
+	in model file write
+	public $timestamps=false
+
+	// if you allow only chosen coulumn to fill value so write this
+
+	protected $fillable =['column1','column2'];
+
+in controller file
+use model file
+and create object of model file class
+$obj->column_name='value'
+$obj->column_name='value'
+
+$obj->save()  // to insert value into database like as mysqli_query()
+
+-------------
+if you want to make table with other name and model with other name so use
+  protected $table= 'students';
+in model
+
+------------------------------------------
+@each('filename what you include',variable_name,'vraiable_name in file name')
+
+--------------------------
+@stack('name1')  // in master page view
+
+@stack('name2')
+
+
+include in child page view
+
+	@push('name1')
+		<link href="" rel="stylesheet">
+	@endpush
+
+
+	@push('name2')
+		<script src=""></script>
+	@endpush
+-------------------------------------------
+		for redirect 
+		redirect()->to('function_name');
+		
+------------------------------------------------
+			Session
+to make a session
+	session()->put('user','vikas singh');
+
+to ge session value
+	session()->get('user','if user not exists then show this message');
+
+flash a session
+	session()->flash('user','vikas singh');
+
+reflash a session
+	session()->reflash();
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<?php $__env->startSection('body-part'); ?>
+	<div style="background: red;height: 300px;width: 500px;margin:0px auto;font-size: 100px;text-align:center;">
+		This is a controller
+	</div>
+	
+		<?php echo e($name); ?>  <!-- output => vikas singh<script>alert('hello');</script>  -->
+		<br>
+		<?php echo $name; ?>  <!-- output => vikas singh and run alert script -->
+		<br>
+		{{ $name }} <!-- output => <?php echo e($name); ?> -->
+		<br>
+		<?php  $error="data not found"; ?>
+		<b>
+			<?php if($name=='vikas singh'): ?>
+				<?php echo e($name); ?>
+
+			<?php elseif($name=='vikas'): ?>
+				<?php echo e($name); ?>
+
+			<?php else: ?>
+				<?php echo e($error); ?>
+
+			<?php endif; ?>
+		</b>
+	<a href="showthis">Click here</a>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout/master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
